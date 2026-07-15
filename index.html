@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEOKARTS</title>
+  <meta name="description"
+    content="Feel the Speed. Own the Track. Discover NEO Karts' next-generation, high-performance racing machines engineered for speed, safety, and sustainable thrill.">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Favicons (place your generated icons at project root) -->
+  <link rel="icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#050505">
+</head>
+
+<body>
+
+  <!-- Background Grain Overlay -->
+  <div class="noise-overlay"></div>
+
+  <!-- Custom Cursor Elements -->
+  <div class="custom-cursor"></div>
+  <div class="custom-cursor-follower"><span class="cursor-text"></span></div>
+
+  <!-- Cinematic Loading Screen -->
+  <div id="loader">
+    <canvas id="loader-smoke" class="loader-smoke-canvas"></canvas>
+    <div class="loader-container">
+      <div class="loader-logo">NEO<span>KARTS</span></div>
+      <div class="speedometer-box">
+        <svg class="speedometer-svg" viewBox="0 0 150 150">
+          <circle class="speedometer-track" cx="75" cy="75" r="65"></circle>
+          <circle class="speedometer-fill" cx="75" cy="75" r="65"></circle>
+        </svg>
+        <div class="speed-value">
+          <div class="speed-number">0</div>
+          <div class="speed-unit">KM/H</div>
+        </div>
+      </div>
+      <div class="loader-status">CALIBRATING RACING CORE...</div>
+    </div>
+  </div>
+
+  <!-- Floating Glass Navbar -->
+  <nav class="navbar">
+    <a href="#" class="nav-brand magnetic">
+      <img src="assets/images/png.png" alt="NEOKARTS" class="site-logo-img">
+      <span class="site-logo-text sr-only">NEOKARTS</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#hero" class="active">Home</a></li>
+      <li><a href="#story">About</a></li>
+      <li><a href="#showcase">Karts</a></li>
+      <li><a href="#spare-parts">Spare Parts</a></li>
+      <li><a href="#interactive-features">Specs</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-menu-btn" aria-label="Toggle Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Fullscreen Animated Menu -->
+  <div class="fullscreen-menu">
+    <div class="menu-wrapper">
+      <a href="#hero" class="menu-link"><span>01</span>Home</a>
+      <a href="#story" class="menu-link"><span>02</span>About</a>
+      <a href="#showcase" class="menu-link"><span>03</span>Karts</a>
+      <a href="#spare-parts" class="menu-link"><span>04</span>Spare Parts</a>
+      <a href="#interactive-features" class="menu-link"><span>06</span>Specs</a>
+      <a href="#gallery" class="menu-link"><span>07</span>Gallery</a>
+      <a href="#contact" class="menu-link"><span>08</span>Contact</a>
+    </div>
+  </div>
+
+  <!-- Three.js 3D Viewport container -->
+  <div id="webgl-container"></div>
+
+  <!-- Hero Section -->
+  <header id="hero" class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-title-box">
+        <h1>
+          <div class="text-mask-reveal.active"><span class="line-1">BUILT FOR</span></div>
+          <div class="text-mask-reveal.active"><span class="line-2">PURE <span>SPEED</span></span></div>
+        </h1>
+        <p class="hero-subtitle">Experience India's Premium Racing Machines</p>
+      </div>
+      <div class="hero-actions">
+        <a href="#showcase" class="btn btn-primary btn-glow" data-cursor-text="DISCOVER">EXPLORE KARTS</a>
+        <a href="#contact" class="btn btn-secondary" data-cursor-text="PILOT">BOOK DEMO</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Section 1: The Story (About us) -->
+  <section id="story">
+    <div class="bg-glow-blob blob-1"></div>
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-left">
+          <span class="section-tag">ENGINEERING DNA</span>
+          <h2 class="section-title">FEEL THE SPEED.<br><span>OWN THE TRACK.</span></h2>
+          <div class="story-text">
+            <p class="split-reveal">NEO Karts delivers innovative, high-performance karting solutions designed for
+              speed, safety, and sustainability. Experience next-generation engineering built for thrill seekers and
+              professionals alike.</p>
+            <p class="split-reveal">By combining <span>TIG-welded chromoly frames</span> with advanced <span>telemetry
+                instrumentation</span>, we construct karts that translate driver intent directly to the tarmac. We are
+              driving the future of smart mobility.</p>
+          </div>
+        </div>
+        <div class="story-right">
+          <div class="story-image-box image-reveal-wrapper active">
+            <img src="https://www.neokarts.in/wp-content/uploads/2026/02/bannn.png" alt="Neo Karts Banner Layout"
+              data-cursor-text="FOCUS">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Go-Kart Showcase -->
+  <section id="showcase">
+    <div class="container">
+      <span class="section-tag font-tech">THE FLEET</span>
+      <h2 class="section-title">THE CHAMPIONSHIP <span>KART TRILOGY</span></h2>
+
+      <div class="showcase-grid">
+        <!-- Card 1 -->
+        <div class="showcase-card glass-panel glow-border-sweep" data-kart-id="hyper-x">
+          <div class="card-bg-glow"></div>
+          <div class="card-num">01</div>
+          <h3 class="card-title">NEO Hyper X</h3>
+          <p class="card-desc">India's leading commercial rental go-kart. Engineered with a robust steel frame and
+            automatic transmission for high durability and track safety.</p>
+          <div class="card-image-wrapper">
+            <img src="https://www.neokarts.in/wp-content/uploads/2026/02/Untitled-design.png" alt="NEO Hyper X Go-Kart">
+          </div>
+          <div class="card-specs">
+            <div class="card-spec-item">
+              <span class="card-spec-val">200 CC</span>
+              <span class="card-spec-label">ENGINE</span>
+            </div>
+            <div class="card-spec-item">
+              <span class="card-spec-val">80 KM/H</span>
+              <span class="card-spec-label">TOP SPEED</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="showcase-card glass-panel glow-border-sweep" data-kart-id="hyper-e">
+          <div class="card-bg-glow"></div>
+          <div class="card-num">02</div>
+          <h3 class="card-title">NEO Flash Hyper</h3>
+          <p class="card-desc">The future of indoor karting. Features an eco-friendly electric powertrain delivering
+            instant torque, zero emissions, and smart battery swapping.</p>
+          <div class="card-image-wrapper">
+            <img src="https://www.neokarts.in/wp-content/uploads/2026/02/4.png" alt="NEO Flash Hyper Electric Go-Kart">
+          </div>
+          <div class="card-specs">
+            <div class="card-spec-item">
+              <span class="card-spec-val">Electric</span>
+              <span class="card-spec-label">POWER UNIT</span>
+            </div>
+            <div class="card-spec-item">
+              <span class="card-spec-val">70 KM/H</span>
+              <span class="card-spec-label">TOP SPEED</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="showcase-card glass-panel glow-border-sweep" data-kart-id="hyper-pro">
+          <div class="card-bg-glow"></div>
+          <div class="card-num">03</div>
+          <h3 class="card-title">NEO Hyper Duo</h3>
+          <p class="card-desc">Designed for shared thrills. Features twin seating, ideal for families, trainers, and
+            amusement tracks where passengers can experience the race together.</p>
+          <div class="card-image-wrapper">
+            <img src="https://www.neokarts.in/wp-content/uploads/2026/02/k2.png" alt="NEO Hyper Duo Two-Seater Go-Kart">
+          </div>
+          <div class="card-specs">
+            <div class="card-spec-item">
+              <span class="card-spec-val">200 CC</span>
+              <span class="card-spec-label">ENGINE</span>
+            </div>
+            <div class="card-spec-item">
+              <span class="card-spec-val">Double</span>
+              <span class="card-spec-label">SEATER</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fullscreen Product Preview Modal -->
+  <div class="preview-modal">
+    <button class="modal-close"><span></span>CLOSE</button>
+    <div class="modal-content">
+      <div class="modal-media">
+        <img src="https://www.neokarts.in/wp-content/uploads/2026/02/Untitled-design.png" alt="Preview Kart">
+      </div>
+      <div class="modal-info">
+        <h2>NEO Hyper X</h2>
+        <div class="modal-tagline">High Performance Single-Seater</div>
+        <p class="modal-desc">India's premier commercial rental go-kart. Engineered with a heavy-duty steel frame,
+          automatic wet-clutch transmission, and high-safety hydraulic disc brakes. Perfect for tracks demanding speed,
+          reliability, and rugged durability.</p>
+        <div class="modal-specs-table">
+          <div class="modal-spec-row">
+            <span class="label">Top Speed</span>
+            <span class="val">80 KM/H</span>
+          </div>
+          <div class="modal-spec-row">
+            <span class="label">Acceleration</span>
+            <span class="val">3.5 SEC</span>
+          </div>
+          <div class="modal-spec-row">
+            <span class="label">Power Unit</span>
+            <span class="val">9 HP (200CC)</span>
+          </div>
+          <div class="modal-spec-row">
+            <span class="label">Chassis Weight</span>
+            <span class="val">110 KG</span>
+          </div>
+        </div>
+        <a href="#contact" class="btn btn-primary btn-glow"
+          onclick="document.querySelector('.preview-modal').classList.remove('open'); if(window.lenis) window.lenis.start();">BOOK
+          TRIAL NOW</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2.5: Spare Parts -->
+  <section id="spare-parts">
+    <div class="container">
+
+      <span class="section-tag font-tech">PADDOCK SERVICES</span>
+
+      <h2 class="section-title">
+        Genuine Go-Kart <span>Spare Parts</span>
+      </h2>
+
+      <div class="story-text" style="max-width:900px; margin:40px auto; text-align:center;">
+
+        <p style="color:var(--text-muted); font-size:1.1rem; margin-bottom:25px;">
+          We supply genuine Go-Kart spare parts for racing, maintenance and performance upgrades.
+          Download our complete spare parts catalogue below or contact us for any specific requirements.
+        </p>
+
+        <div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-bottom:40px;">
+
+          <a href="assets/docs/Neo Karts Spare List - Copy.pdf" target="_blank" class="btn btn-primary btn-glow">
+            📄 Spare Parts Catalogue
+          </a>
+
+          <a href="assets/docs/Neo Kats Engine Spare Parts List.pdf" target="_blank" class="btn btn-secondary">
+            📄 Additional Engine Spare Parts
+          </a>
+
+        </div>
+      </div>
+    </div>
+    </section>
+
+        <!-- Section 3: Performance Metrics -->
+        <section id="performance">
+          <div class="container">
+            <span class="section-tag">BENCHMARKS</span>
+            <h2 class="section-title">CALIBRATED FOR <span>PODIUMS</span></h2>
+
+            <div class="performance-grid">
+              <div class="perf-card glass-panel">
+                <div class="perf-number"><span data-target="80" data-float="false">0</span></div>
+                <h4 class="perf-label">KM/H SPEED</h4>
+                <p class="perf-desc">Honda-type 200cc 4-stroke engines tuned for high straightaway velocities and corner
+                  exit drive.</p>
+              </div>
+
+              <div class="perf-card glass-panel">
+                <div class="perf-number"><span data-target="3.5" data-float="true">0</span></div>
+                <h4 class="perf-label">SECONDS</h4>
+                <p class="perf-desc">0 to 60 km/h speed is achieved rapidly with automatic wet-clutch torque engagement.
+                </p>
+              </div>
+
+              <div class="perf-card glass-panel">
+                <div class="perf-number"><span data-target="110" data-float="false">0</span></div>
+                <h4 class="perf-label">KG WEIGHT</h4>
+                <p class="perf-desc">TIG-welded heavy-gauge steel frame designed for structural rigidity and high impact
+                  safety.</p>
+              </div>
+
+              <div class="perf-card glass-panel">
+                <div class="perf-number"><span data-target="9" data-float="false">0</span></div>
+                <h4 class="perf-label">HP POWER</h4>
+                <p class="perf-desc">Fully automatic transmission delivers smooth, instant power to the rear drive
+                  sprocket.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 4: Manufacturing (Horizontal Timeline) -->
+        <section class="manufacturing-container" id="manufacturing">
+          <div class="container">
+            <span class="section-tag">FABRICATION LANE</span>
+            <h2 class="section-title">HOW KARTS <span>ARE BORN</span></h2>
+          </div>
+
+          <div class="timeline-outer">
+            <div class="timeline-track">
+              <div class="timeline-line"></div>
+
+              <!-- Step 1 -->
+              <div class="timeline-item active">
+                <div class="timeline-node"></div>
+                <div class="timeline-step">STEP 01</div>
+                <h3 class="timeline-title">CHROMOLY FRAMES</h3>
+                <p class="timeline-desc">We start with raw high-tensile molybdenum-chrome alloy tubes, bent to exact
+                  dimensions on custom tooling jigs.</p>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="timeline-item">
+                <div class="timeline-node"></div>
+                <div class="timeline-step">STEP 02</div>
+                <h3 class="timeline-title">TIG HAND WELDING</h3>
+                <p class="timeline-desc">Master welding engineers fusion TIG-weld the chassis framework to avoid
+                  micro-fractures under massive side G-forces.</p>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="timeline-item">
+                <div class="timeline-node"></div>
+                <div class="timeline-step">STEP 03</div>
+                <h3 class="timeline-title">POWERPLANT INSTALL</h3>
+                <p class="timeline-desc">We mount high-performance 4-stroke petrol engines or eco-friendly electric
+                  drivetrains with automatic wet clutch systems.</p>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="timeline-item">
+                <div class="timeline-node"></div>
+                <div class="timeline-step">STEP 04</div>
+                <h3 class="timeline-title">AERO SHIELDS</h3>
+                <p class="timeline-desc">Impact-resistant plastic side pods and carbon-fiber front noses are fitted to
+                  lower air drag coefficients.</p>
+              </div>
+
+              <!-- Step 5 -->
+              <div class="timeline-item">
+                <div class="timeline-node"></div>
+                <div class="timeline-step">STEP 05</div>
+                <h3 class="timeline-title">TRACK TESTING</h3>
+                <p class="timeline-desc">Every kart undergoes extensive dyno tests, throttle response calibration, brake
+                  force balancing, and alignment checks before leaving the factory.</p>
+              </div>
+
+              <!-- Step 6 -->
+              <div class="timeline-item">
+                <div class="timeline-node"></div>
+                <div class="timeline-step">STEP 06</div>
+                <h3 class="timeline-title">TRACK DISPATCH</h3>
+                <p class="timeline-desc">Shipped securely with high-density protective frames directly to rental arenas
+                  or
+                  championship paddocks.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 5: Interactive Features -->
+        <section id="interactive-features">
+          <div class="container">
+            <span class="section-tag">COMPONENTS EXPLORER</span>
+            <h2 class="section-title">THE RACING <span>ARCHITECTURE</span></h2>
+
+            <div class="features-layout">
+              <!-- SVG Interactive Hotspots Grid -->
+              <div class="features-canvas-box">
+                <!-- Minimal Go-Kart wireframe SVG as reference visualizer -->
+                <svg class="kart-outline-svg" viewBox="0 0 600 400">
+                  <!-- Front wheels axle -->
+                  <line x1="120" y1="200" x2="480" y2="200" stroke-width="4"></line>
+                  <!-- Rear wheels axle -->
+                  <line x1="100" y1="320" x2="500" y2="320" stroke-width="6"></line>
+                  <!-- Chassis side lines -->
+                  <path d="M 120,200 L 160,120 L 440,120 L 480,200 L 500,320 L 100,320 Z" stroke-width="3"></path>
+                  <!-- Seat representation -->
+                  <rect x="230" y="240" width="140" height="80" rx="10" stroke-width="2"></rect>
+                  <!-- Steering Wheel -->
+                  <circle cx="300" cy="180" r="30" stroke-width="3"></circle>
+                  <!-- Engine area -->
+                  <rect x="150" y="280" width="70" height="50" rx="5" stroke-width="2"></rect>
+                </svg>
+
+                <!-- Hotspot points overlaid -->
+                <!-- Engine -->
+                <div class="hotspot" style="top: 72%; left: 32%;" data-component="engine" data-cursor-text="ENGINE">
+                  <div class="hotspot-pulse"></div>
+                </div>
+                <!-- Chassis -->
+                <div class="hotspot" style="top: 45%; left: 62%;" data-component="chassis" data-cursor-text="CHASSIS">
+                  <div class="hotspot-pulse"></div>
+                </div>
+                <!-- Tyres -->
+                <div class="hotspot" style="top: 48%; left: 81%;" data-component="tyres" data-cursor-text="TIRES">
+                  <div class="hotspot-pulse"></div>
+                </div>
+                <!-- Steering -->
+                <div class="hotspot" style="top: 43%; left: 50%;" data-component="steering" data-cursor-text="STEER">
+                  <div class="hotspot-pulse"></div>
+                </div>
+                <!-- Brakes -->
+                <div class="hotspot" style="top: 80%; left: 16%;" data-component="brakes" data-cursor-text="BRAKES">
+                  <div class="hotspot-pulse"></div>
+                </div>
+
+                <!-- SVG connector lines drawn dynamically -->
+                <svg class="connection-svg">
+                  <line id="line-0" class="connection-line" x1="32%" y1="72%" x2="65%" y2="25%"></line>
+                  <line id="line-1" class="connection-line" x1="62%" y1="45%" x2="65%" y2="40%"></line>
+                  <line id="line-2" class="connection-line" x1="81%" y1="48%" x2="65%" y2="55%"></line>
+                  <line id="line-3" class="connection-line" x1="50%" y1="43%" x2="65%" y2="70%"></line>
+                  <line id="line-4" class="connection-line" x1="16%" y1="80%" x2="65%" y2="85%"></line>
+                </svg>
+              </div>
+
+              <!-- Cards representing each features description -->
+              <div class="features-stack">
+                <!-- Card 1 -->
+                <div class="feature-item-card glass-panel" data-index="0">
+                  <div class="feature-card-header">
+                    <h4 class="feature-card-title">200cc 4-Stroke Engine</h4>
+                    <span class="feature-card-icon">⚙️</span>
+                  </div>
+                  <p class="feature-card-desc">Reliable Honda-type four-stroke engine offering 9 HP. Features an
+                    automatic
+                    wet clutch and heavy-duty chain drive for robust power output.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="feature-item-card glass-panel" data-index="1">
+                  <div class="feature-card-header">
+                    <h4 class="feature-card-title">Heavy-Duty Chassis</h4>
+                    <span class="feature-card-icon">🛠️</span>
+                  </div>
+                  <p class="feature-card-desc">TIG-welded spaceframe framework designed for optimal torsional stiffness
+                    and maximum impact safety under race conditions.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="feature-item-card glass-panel" data-index="2">
+                  <div class="feature-card-header">
+                    <h4 class="feature-card-title">High-Grip Slick Tires</h4>
+                    <span class="feature-card-icon">⭕</span>
+                  </div>
+                  <p class="feature-card-desc">Racing slick rubber compound engineered to maximize track grip, providing
+                    predictable cornering limits and long tread life.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="feature-item-card glass-panel" data-index="3">
+                  <div class="feature-card-header">
+                    <h4 class="feature-card-title">Direct Steering Linkage</h4>
+                    <span class="feature-card-icon">🎯</span>
+                  </div>
+                  <p class="feature-card-desc">Simple, direct mechanical linkage geometry offering heavy, instantaneous
+                    feedback for surgical steering precision.</p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="feature-item-card glass-panel" data-index="4">
+                  <div class="feature-card-header">
+                    <h4 class="feature-card-title">Self-Ventilating Brakes</h4>
+                    <span class="feature-card-icon">🛑</span>
+                  </div>
+                  <p class="feature-card-desc">Hydraulic rear disc brakes with self-ventilating rotors for reliable
+                    stopping power and minimal thermal fade on long race sessions.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Section 6: Gallery -->
+          <section id="gallery">
+            <div class="bg-glow-blob blob-2"></div>
+            <div class="container">
+              <span class="section-tag">VISUAL PADDOCK</span>
+              <h2 class="section-title">THE RACING <span>EXPERIENCE</span></h2>
+
+              <div class="gallery-grid">
+                <div class="gallery-item">
+                  <img src="assets/images/gallery-5.jpg" alt="NEO Karts Championship Lineup" loading="lazy" decoding="async">
+                  <div class="gallery-overlay">
+                    <div class="gallery-info">
+                      <h4>CHAMPIONSHIP LINEUP</h4>
+                      <p>The NEO fleet standing ready in the paddock</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="gallery-item">
+                  <img src="assets/images/gallery-2.jpg" alt="NEO Racer #1 Close-up" loading="lazy" decoding="async">
+                  <div class="gallery-overlay">
+                    <div class="gallery-info">
+                      <h4>NEO RACER</h4>
+                      <p>High-performance chassis with yellow decals</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="gallery-item">
+                  <img src="assets/images/gallery-1.jpg" alt="Hyper Duo Double-Seater Go-Kart" loading="lazy" decoding="async">
+                  <div class="gallery-overlay">
+                    <div class="gallery-info">
+                      <h4>HYPER DUO</h4>
+                      <p>Commercial double-seater track go-kart</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="gallery-item">
+                  <img src="assets/images/gallery-3.jpg" alt="Go-Kart Drivetrain Details" loading="lazy" decoding="async">
+                  <div class="gallery-overlay">
+                    <div class="gallery-info">
+                      <h4>PADDOCK DETAILED</h4>
+                      <p>Close-up inspection of drivetrain & tires</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="gallery-item">
+                  <img src="assets/images/gallery-4.jpg" alt="NEO Hyper X #2 Front View" loading="lazy" decoding="async">
+                  <div class="gallery-overlay">
+                    <div class="gallery-info">
+                      <h4>NEO HYPER X</h4>
+                      <p>India's premier commercial rental go-kart</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Video 1: Go-Kart Racing Clip (lazy-loaded, autoplay muted loop, responsive) -->
+                <div class="gallery-item">
+                  <video class="gallery-video" playsinline muted autoplay loop preload="metadata" poster="assets/images/gallery-vid1.jpg" data-src="assets/videos/vid1.mp4" style="width:100%;height:100%;object-fit:cover;display:block;">
+                    <source data-src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                  <div class="gallery-overlay">
+                    <div class="gallery-info">
+                      <h4>GO-KART RACE CLIP 1</h4>
+                      <p>Short action clip (autoplays muted, loops)</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Video 2: Go-Kart Racing Clip (lazy-loaded, autoplay muted loop, responsive) -->
+                <div class="gallery-item">
+                  <video class="gallery-video" playsinline muted autoplay loop preload="metadata" poster="assets/images/gallery-vid2.jpg" data-src="assets/videos/vid2.mp4" style="width:100%;height:100%;object-fit:cover;display:block;">
+                    <source data-src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                  <div class="gallery-overlay">
+                    <div class="gallery-info">
+                      <h4>GO-KART RACE CLIP 2</h4>
+                      <p>Short action clip (autoplays muted, loops)</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <script>
+            // Lazy-load gallery videos and toggle controls on hover/touch
+            (function() {
+              const vids = document.querySelectorAll('.gallery-video');
+              if (!vids.length) return;
+
+              const options = { root: null, rootMargin: '200px', threshold: 0.01 };
+              const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                    const v = entry.target;
+                    const srcEl = v.querySelector('source');
+                    const dataSrc = srcEl?.getAttribute('data-src') || v.getAttribute('data-src');
+                    if (dataSrc && (!srcEl.getAttribute('src'))) {
+                      srcEl.setAttribute('src', dataSrc);
+                      try { v.load(); } catch(e) {}
+                      // attempt to play muted videos (allowed on most browsers when muted)
+                      v.play().catch(() => {});
+                    }
+                    io.unobserve(v);
+                  }
+                });
+              }, options);
+
+              vids.forEach(v => {
+                // Hide native controls initially, show only on hover/focus
+                v.controls = false;
+                // For touch devices, toggle controls on tap
+                v.addEventListener('click', (e) => {
+                  v.controls = true;
+                  // briefly show controls
+                  setTimeout(() => { if (!v.matches(':hover')) v.controls = false; }, 2500);
+                });
+
+                v.addEventListener('mouseenter', () => { v.controls = true; });
+                v.addEventListener('mouseleave', () => { v.controls = false; });
+
+                io.observe(v);
+              });
+            })();
+          </script>
+
+          <!-- Section 7: Testimonials -->
+          <section id="testimonials">
+            <div class="container">
+              <span class="section-tag">TESTIMONIALS</span>
+              <h2 class="section-title">THE RACING <span>COMMUNITY</span></h2>
+            </div>
+
+            <div class="testimonials-slider">
+              <div class="testimonials-track">
+                <!-- Card 1 -->
+                <div class="testimonial-card glass-panel">
+                  <p class="testimonial-quote">"The NEO Hyper X changed our entire rental business. Drivers are
+                    absolutely
+                    wowed by the instant throttle punch, handling, and my mechanics love the high reliability."</p>
+                  <div class="testimonial-user">
+                    <div class="user-avatar">
+                      <img src="https://www.neokarts.in/wp-content/uploads/2021/02/testimonial-14-free-img.jpg"
+                        alt="Rahul Harpale" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
+                    </div>
+                    <div class="user-info">
+                      <h5>Rahul Harpale</h5>
+                      <p>Track Owner, Pune Circuit</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="testimonial-card glass-panel">
+                  <p class="testimonial-quote">"I ran the Hyper Duo in the local racing events. The chassis stiffness is
+                    incredibly uniform and responsive. Exceptional build quality and track-ready alignment."</p>
+                  <div class="testimonial-user">
+                    <div class="user-avatar">
+                      <img src="https://www.neokarts.in/wp-content/uploads/2021/02/testimonial-01-free-img.jpg"
+                        alt="Aditya Sen" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
+                    </div>
+                    <div class="user-info">
+                      <h5>Aditya Sen</h5>
+                      <p>Pro Kart Driver</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="testimonial-card glass-panel">
+                  <p class="testimonial-quote">"We've switched our indoor fleet to the Flash Hyper Electric. Zero fumes,
+                    lower noise floor, but the speed keeps visitors coming back week after week."</p>
+                  <div class="testimonial-user">
+                    <div class="user-avatar">
+                      <img src="https://www.neokarts.in/wp-content/uploads/2021/02/testimonial-03-free-img.jpg"
+                        alt="Karan Mehta" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
+                    </div>
+                    <div class="user-info">
+                      <h5>Karan Mehta</h5>
+                      <p>Manager, Go-Wild Arena</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Duplicate Cards for Infinite Loop -->
+                <div class="testimonial-card glass-panel">
+                  <p class="testimonial-quote">"The NEO Hyper X changed our entire rental business. Drivers are
+                    absolutely
+                    wowed by the instant throttle punch, handling, and my mechanics love the high reliability."</p>
+                  <div class="testimonial-user">
+                    <div class="user-avatar">
+                      <img src="https://www.neokarts.in/wp-content/uploads/2021/02/testimonial-14-free-img.jpg"
+                        alt="Rahul Harpale" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
+                    </div>
+                    <div class="user-info">
+                      <h5>Rahul Harpale</h5>
+                      <p>Track Owner, Pune Circuit</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="testimonial-card glass-panel">
+                  <p class="testimonial-quote">"I ran the Hyper Duo in the local racing events. The chassis stiffness is
+                    incredibly uniform and responsive. Exceptional build quality and track-ready alignment."</p>
+                  <div class="testimonial-user">
+                    <div class="user-avatar">
+                      <img src="https://www.neokarts.in/wp-content/uploads/2021/02/testimonial-01-free-img.jpg"
+                        alt="Aditya Sen" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
+                    </div>
+                    <div class="user-info">
+                      <h5>Aditya Sen</h5>
+                      <p>Pro Kart Driver</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="testimonial-card glass-panel">
+                  <p class="testimonial-quote">"We've switched our indoor fleet to the Flash Hyper Electric. Zero fumes,
+                    lower noise floor, but the speed keeps visitors coming back week after week."</p>
+                  <div class="testimonial-user">
+                    <div class="user-avatar">
+                      <img src="https://www.neokarts.in/wp-content/uploads/2021/02/testimonial-03-free-img.jpg"
+                        alt="Karan Mehta" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
+                    </div>
+                    <div class="user-info">
+                      <h5>Karan Mehta</h5>
+                      <p>Manager, Go-Wild Arena</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 8: Why Choose Us (Bento Grid) -->
+          <section id="why-choose-us">
+            <div class="container">
+              <span class="section-tag">ADVANTAGES</span>
+              <h2 class="section-title">THE NEOKARTS<span>DIFFERENCE</span></h2>
+
+              <div class="bento-grid">
+                <!-- Tile 1 -->
+                <div class="bento-tile col-2 row-2 glass-panel">
+                  <div class="bento-tile-icon">🏁</div>
+                  <h4 class="bento-tile-title">Track Design & Consultation</h4>
+                  <p class="bento-tile-desc">We offer end-to-end consulting services to design and set up professional
+                    go-karting tracks. We optimize track safety layouts, high-impact barrier placements, and racing
+                    telemetry integrations.</p>
+                </div>
+
+                <!-- Tile 2 -->
+                <div class="bento-tile glass-panel">
+                  <div class="bento-tile-icon">🏆</div>
+                  <h4 class="bento-tile-title">Racing Championships</h4>
+                  <p class="bento-tile-desc">Neo Karts supports competitive racing events, championships, and corporate
+                    leagues with robust track fleets engineered for high performance and durability.</p>
+                </div>
+
+                <!-- Tile 3 -->
+                <div class="bento-tile glass-panel">
+                  <div class="bento-tile-icon">⚙️</div>
+                  <h4 class="bento-tile-title">Premium Spare Parts</h4>
+                  <p class="bento-tile-desc">Continuous supply of high-grade spare parts, chassis components, tyres, and
+                    engines to keep your tracks running with zero down-time.</p>
+                </div>
+
+                <!-- Tile 4 -->
+                <div class="bento-tile col-2 glass-panel">
+                  <div class="bento-tile-icon">🛠️</div>
+                  <h4 class="bento-tile-title">Modular Ergonomics</h4>
+                  <p class="bento-tile-desc">Adjust pedal, seat, and steering columns within seconds, allowing drivers
+                    of
+                    all heights to calibrate their perfect track positioning instantly.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 9: Statistics -->
+          <section id="statistics">
+            <div class="container">
+              <span class="section-tag font-tech">BY THE NUMBERS</span>
+              <h2 class="section-title">GLOBAL <span>TRACK FOOTPRINT</span></h2>
+
+              <div class="stats-grid">
+                <div class="stat-item glass-panel">
+                  <div class="stat-num"><span data-target="1200">0</span>+</div>
+                  <p class="stat-label">Happy Drivers</p>
+                </div>
+
+                <div class="stat-item glass-panel">
+                  <div class="stat-num"><span data-target="4">0</span>+</div>
+                  <p class="stat-label">Years Experience</p>
+                </div>
+
+                <div class="stat-item glass-panel">
+                  <div class="stat-num"><span data-target="300">0</span>+</div>
+                  <p class="stat-label">Karts Delivered</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 10: Call To Action -->
+          <section id="contact" class="cta-section">
+            <div class="cta-track-bg"
+              style="background-image: url('https://www.neokarts.in/wp-content/uploads/2026/02/2-scaled.png');"></div>
+            <div class="cta-overlay"></div>
+
+            <div class="cta-container">
+              <span class="section-tag"> cockpit access</span>
+              <h2 class="cta-title">READY TO <span>RACE?</span></h2>
+              <p class="cta-subtitle">Step into the driver's cockpit. Drive your karting vision forward with
+                next-generation smart mobility.</p>
+
+              <div class="cta-actions">
+                <a href="mailto:sales@neokarts.in?subject=Demo%20Booking%20Request" class="btn btn-primary btn-glow"
+                  data-cursor-text="EMAIL">EMAIL INQUIRY</a>
+                <a href="tel:9226574671" class="btn btn-secondary" data-cursor-text="DIAL">CALL US</a>
+              </div>
+            </div>
+          </section>
+
+          <!-- Footer -->
+          <footer class="footer">
+            <div class="container">
+              <div class="footer-grid">
+                <div class="footer-info-col">
+                  <a href="#" class="footer-brand"><img
+                      src="https://www.neokarts.in/wp-content/uploads/2025/11/png-1024x253.png" alt="NEOKARTS Logo"></a>
+                  <p class="footer-desc">Designing, welding, and shipping high-performance karting solutions built for
+                    speed, safety, and track thrills.</p>
+                </div>
+
+                <div class="footer-links-col">
+                  <h4 class="footer-title">THE  NEOKARTS</h4>
+                  <ul class="footer-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#story">About</a></li>
+                    <li><a href="#showcase">Fleet</a></li>
+                    <li><a href="#interactive-features">Architecture</a></li>
+                  </ul>
+                </div>
+
+                <div class="footer-links-col">
+                  <h4 class="footer-title">SUPPORT</h4>
+                  <ul class="footer-links">
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#why-choose-us">Bento Advantage</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="footer-bottom">
+                <p>&copy; 2026 NEO Karts India. Driving the Future of Smart Mobility. Address: House No.3886/5, Harpale
+                  vasti, Pune, Maharashtra 412308.</p>
+                <div class="footer-bottom-links">
+                  <a href="#">Privacy Policy</a>
+                  <a href="#">Terms of Pilot</a>
+                </div>
+              </div>
+            </div>
+          </footer>
+
+          <!-- CDN Dependencies -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+          <!-- Load Lenis Smooth Scroll -->
+          <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+          <!-- Load SplitType for Text Splitting -->
+          <script src="https://unpkg.com/split-type"></script>
+          <!-- Load Vanilla Tilt for 3D card tilt -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+
+          <!-- Fixed Premium WhatsApp Floating Button -->
+          <a href="https://wa.me/919226574671" target="_blank" class="whatsapp-btn-float magnetic"
+            aria-label="Chat on WhatsApp" data-cursor-text="WHATSAPP">
+            <div class="whatsapp-icon-wrapper">
+              <svg class="whatsapp-svg" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.739-1.456L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.725 1.45 5.489 0 9.952-4.466 9.956-9.961.002-2.661-1.019-5.164-2.87-7.019C16.58 1.77 14.083.753 11.427.753c-5.49 0-9.95 4.467-9.955 9.961-.002 1.614.453 3.188 1.355 4.615l-.975 3.56 3.65-.957L6.647 19.15zM17.15 14.12c-.284-.141-1.68-.83-1.94-.924-.26-.096-.45-.141-.64.141-.19.28-.733.924-.9 1.111-.167.19-.333.213-.617.072-1.39-.696-2.28-1.127-3.188-2.686-.24-.41.24-.38.687-1.272.075-.15.038-.282-.019-.395-.056-.113-.45-1.085-.617-1.488-.162-.397-.327-.344-.45-.35-.115-.005-.247-.006-.38-.006-.133 0-.35.05-.533.25-.183.2-.7.684-.7 1.67 0 .983.717 1.931.817 2.071.1.14 1.411 2.155 3.418 3.018 2.007.863 2.007.575 2.366.54.36-.035 1.68-.687 1.916-1.353.237-.666.237-1.238.167-1.353-.07-.115-.285-.207-.568-.348z" />
+              </svg>
+            </div>
+            <div class="whatsapp-ping"></div>
+          </a>
+
+          <!-- Fixed Premium Instagram Floating Button -->
+          <!-- URL PLACEHOLDER - Replace with your Instagram URL if different -->
+          <a href="https://www.instagram.com/neokarts/" target="_blank" class="instagram-btn-float magnetic"
+            aria-label="Follow us on Instagram" data-cursor-text="INSTAGRAM">
+            <div class="instagram-icon-wrapper">
+              <svg class="instagram-svg" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051c-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+              </svg>
+            </div>
+            <div class="instagram-ping"></div>
+          </a>
+
+          <!-- Core Interactive Scripts -->
+          <script src="script.js"></script>
+</body>
+
+</html>
